@@ -1,4 +1,7 @@
-public class CARD {
+import javax.swing.*;
+import java.util.Scanner;
+
+public class Card {
 
     int car=52;
     String[] palo = new String[3];
@@ -60,4 +63,43 @@ public class CARD {
         }
         System.out.println("Quedan "+car+ " cartas");
     }
+
+    public void showMenu(){
+        Card de=new Card();
+        int op;
+        int opb;
+        de.asignar();
+        opb = 1;
+        while (opb==1) {
+            System.out.println("Bienvenido a Poker!");
+            System.out.println("Selecciona una opción:");
+            System.out.println("1 Mezclar deck");
+            System.out.println("2 Sacar una carta");
+            System.out.println("3 Carta al azar");
+            System.out.println("4 Generar una mano de 5 cartas");
+            System.out.println("0 Salir");
+            Scanner reader = new Scanner(System.in);
+            op = reader.nextInt();
+            switch (op) {
+                case 1:
+                    de.shuffle();
+                    break;
+                case 2:
+                    de.head();
+                    break;
+                case 3:
+                    de.pick();
+                    break;
+                case 4:
+                    de.hand();
+                    break;
+                case 0:
+                    opb = 0;
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+
+    }
+}
 }
