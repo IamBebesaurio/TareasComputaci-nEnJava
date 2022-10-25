@@ -60,8 +60,9 @@ public class Card {
             han=(int) (Math.random()*52+1);
             System.out.println(deck[han]);;
             car=car-1;
+            System.out.println("Quedan "+car+ " cartas");
         }
-        System.out.println("Quedan "+car+ " cartas");
+
     }
 
     public void showMenu(){
@@ -70,6 +71,8 @@ public class Card {
         int opb;
         de.asignar();
         opb = 1;
+        int throw_exception;
+        throw_exception = 11;
         while (opb==1) {
             System.out.println("Bienvenido a Poker!");
             System.out.println("Selecciona una opción:");
@@ -82,16 +85,39 @@ public class Card {
             op = reader.nextInt();
             switch (op) {
                 case 1:
-                    de.shuffle();
+                    if (throw_exception<=0) {
+                        System.out.println("Se han agotado las cartas");
+                        opb = 0;
+                    } else {
+                        de.shuffle();
+                    }
                     break;
                 case 2:
-                    de.head();
+                    if (throw_exception<=0) {
+                        System.out.println("Se han agotado las cartas");
+                        opb = 0;
+                    } else {
+                        de.head();
+                        throw_exception=throw_exception-1;
+                    }
                     break;
                 case 3:
-                    de.pick();
+                    if (throw_exception<=0) {
+                        System.out.println("Se han agotado las cartas");
+                        opb = 0;
+                    } else {
+                        de.pick();
+                        throw_exception=throw_exception-1;
+                    }
                     break;
                 case 4:
-                    de.hand();
+                    if (throw_exception<=0) {
+                        System.out.println("Se han agotado las cartas");
+                        opb = 0;
+                    } else {
+                        de.hand();
+                        throw_exception=throw_exception-5;
+                    }
                     break;
                 case 0:
                     opb = 0;
@@ -100,6 +126,8 @@ public class Card {
                     System.out.println("Opción no válida");
             }
 
+        }
+
+        }
     }
-}
-}
+
